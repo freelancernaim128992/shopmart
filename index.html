@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopmart</title>
+    <!-- CSS FILE  -->
+    <link rel="stylesheet" href="./CSS/style.css">
+    <!-- Daisy Ui and Tailwind CSS Link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Font Awesome Link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Start Header Area  -->
+    <header class="w-11/12 mx-auto">
+        <div class="navbar bg-base-100">
+            <div class="navbar-start">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul tabindex="-1"
+                        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-5">
+                        <li class="text-black">Products</li>
+                        <li class="text-black">Home</li>
+                        <li class="text-black">About</li>
+                        <li class="text-black">Contact</li>
+                    </ul>
+                </div>
+                <a class="btn btn-ghost text-xl text-primary">ShopMart</a>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal px-1 gap-5">
+                    <li class="text-primary">Home</li>
+                    <li class="text-black">Products</li>
+                    <li class="text-black">About</li>
+                    <li class="text-black">Contact</li>
+                </ul>
+            </div>
+            <div class="navbar-end">
+                <a class="text-primary"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Start Hero Section  -->
+    <section class="hero py-30">
+        <div class="w-11/12 mx-auto">
+            <div class="flex justify-center items-center">
+                <div class="text-white">
+                    <h1 class="text-3xl font-bold">Best Collections For You</h1>
+                    <p class="mt-2 w-3/4">Discover the latest trends on fashion, electronics and more. Shop with
+                        confidence and style at Shopmart</p>
+                    <button class="btn btn-primary mt-4 text-white">Shop Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Why Choose Us Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+
+            <!-- Title -->
+            <h2 class="text-3xl font-bold mb-3">Why choose us</h2>
+
+            <!-- Description (10 words) -->
+            <p class="text-gray-600 mb-16">
+                We provide trusted services with speed, security, and support.
+            </p>
+
+            <!-- Cards Container -->
+            <div id="featureCards" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+
+        </div>
+    </section>
+
+    <!-- Js File  -->
+    <script src="./script/main.js"></script>
+</body>
+
+</html>

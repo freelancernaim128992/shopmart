@@ -1,0 +1,6 @@
+.hero{
+    background: linear-gradient(45deg, #000000db, #00000042), url(../Assets/banner-image.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
