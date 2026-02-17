@@ -21,10 +21,9 @@ const featuresData = [
         desc: "Return products easily with our simple return process."
     }
 ];
-
-const container = document.getElementById("featureCards");
 // Display Feature 
 featuresData.forEach(item => {
+    const container = document.getElementById("featureCards");
     container.innerHTML += `
     <div class="relative bg-white rounded-xl pt-12 pb-6 px-6 shadow text-center">
 
