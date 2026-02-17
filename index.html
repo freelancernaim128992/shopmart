@@ -52,7 +52,7 @@
             </div>
         </div>
     </header>
-
+    <!-- start home sections  -->
     <div id="home-sections">
         <!-- Start Hero Section  -->
         <section class="hero py-30">
@@ -97,10 +97,44 @@
             </div>
         </section>
     </div>
-    <div id="products-sections" class="hidden">
-        <h1 class="text-3xl font-bold mb-6">Products</h1>
-        <div id="productsContainer"></div>
-    </div>
+    <!-- product section  -->
+    <section id="products-sections" class="hidden">
+        <div class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+
+                <!-- Title -->
+                <h2 class="text-3xl font-bold mb-6 text-center">Our Products</h2>
+
+                <!-- Categories -->
+                <div id="categoryButtons" class="flex flex-wrap justify-center gap-3 mb-10"></div>
+
+                <!-- Products -->
+                <div id="productsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+                <!-- Error -->
+                <p id="errorMessage" class="text-center text-red-500 mt-6 hidden">
+                    No products found in this category.
+                </p>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <dialog id="productModal" class="modal">
+            <div class="modal-box max-w-2xl">
+                <h3 id="modalTitle" class="font-bold text-xl mb-3"></h3>
+                <p id="modalDescription" class="mb-4"></p>
+                <p id="modalRating" class="mb-4 font-semibold"></p>
+
+                <div class="modal-action">
+                    <button class="btn btn-primary">Buy Now</button>
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
+    </section>
     <!-- Footer Area  -->
     <footer class="bg-[#1E2939] ">
         <div class="w-11/12 mx-auto">

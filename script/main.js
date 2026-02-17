@@ -140,3 +140,123 @@ function loadProducts() {
     });
 }
 
+const productsContainer = document.getElementById("productsContainer");
+const categoryButtons = document.getElementById("categoryButtons");
+const errorMessage = document.getElementById("errorMessage");
+
+let allProducts = [];
+
+// Fetch all products
+fetch("https://fakestoreapi.com/products")
+  .then(res => res.json())
+  .then(data => {
+    allProducts = data;
+    renderProducts(allProducts);
+  });
+
+// Fetch categories
+fetch("https://fakestoreapi.com/products/categories")
+  .then(res => res.json())
+  .then(categories => {
+    renderCategoryButtons(categories);
+  });
+
+function renderCategoryButtons(categories) {
+  const allBtn = `<button class="btn btn-outline btn-primary active" onclick="filterCategory('all', this)">All</button>`;
+  categoryButtons.innerHTML = allBtn;
+
+  categories.forEach(cat => {
+    categoryButtons.innerHTML += `
+      <button class="btn btn-outline" onclick="filterCategory('${cat}', this)">
+        ${cat}
+      </button>
+    `;
+  });
+}
+
+function filterCategory(category, btn) {
+  document.querySelectorAll("#categoryButtons button").forEach(b => {
+    b.classList.remove("btn-primary");
+  });
+
+  btn.classList.add("btn-primary");
+
+  if (category === "all") {
+    renderProducts(allProducts);
+  } else {
+    const filtered = allProducts.filter(p => p.category === category);
+
+    if (filtered.length === 0) {
+      productsContainer.innerHTML = "";
+      errorMessage.classList.remove("hidden");
+    } else {
+      errorMessage.classList.add("hidden");
+      renderProducts(filtered);
+    }
+  }
+}
+
+function renderProducts(products) {
+  productsContainer.innerHTML = "";
+  errorMessage.classList.add("hidden");
+
+  products.forEach(product => {
+    productsContainer.innerHTML += `
+      <div class="bg-white shadow rounded-xl overflow-hidden">
+
+        <div class="bg-gray-100 flex justify-center p-6">
+          <img src="${product.image}" class="h-40 object-contain">
+        </div>
+
+        <div class="p-4 space-y-3">
+
+          <div class="flex justify-between items-center">
+            <span class="bg-primary/10 text-primary text-xs px-3 py-1 rounded-full">
+              ${product.category}
+            </span>
+
+            <span class="flex items-center text-sm text-gray-600">
+              <i class="fa-solid fa-star text-yellow-400 mr-1"></i>
+              ${product.rating.rate} (${product.rating.count})
+            </span>
+          </div>
+
+          <h3 class="font-semibold text-lg line-clamp-2">
+            ${product.title}
+          </h3>
+
+          <p class="font-bold text-xl">$${product.price}</p>
+
+          <div class="flex gap-3 pt-2">
+            <button onclick="openDetails(${product.id})"
+              class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-100">
+              <i class="fa-regular fa-eye"></i>
+              Details
+            </button>
+
+            <button class="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm">
+              <i class="fa-solid fa-cart-shopping"></i>
+              Add
+            </button>
+          </div>
+
+        </div>
+      </div>
+    `;
+  });
+}
+
+// Details modal
+function openDetails(id) {
+  fetch(`https://fakestoreapi.com/products/${id}`)
+    .then(res => res.json())
+    .then(product => {
+      document.getElementById("modalTitle").innerText = product.title;
+      document.getElementById("modalDescription").innerText = product.description;
+      document.getElementById("modalRating").innerText =
+        `Rating: ${product.rating.rate} (${product.rating.count})`;
+
+      document.getElementById("productModal").showModal();
+    });
+}
+
