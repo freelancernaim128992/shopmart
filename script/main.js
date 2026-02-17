@@ -105,3 +105,38 @@ fetch("https://fakestoreapi.com/products")
       `;
     });
   });
+
+// Products Data Load 
+const homeSection = document.getElementById("home-sections");
+const productsSection = document.getElementById("products-sections");
+
+function showHome() {
+  homeSection.classList.remove("hidden");
+  productsSection.classList.add("hidden");
+}
+
+function showProducts() {
+  homeSection.classList.add("hidden");
+  productsSection.classList.remove("hidden");
+
+  loadProducts(); // products data load করবে
+}
+
+function loadProducts() {
+  fetch("https://fakestoreapi.com/products")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("productsContainer");
+      container.innerHTML = "";
+
+      data.forEach(product => {
+        container.innerHTML += `
+          <div class="border p-4 mb-3">
+            <h3>${product.title}</h3>
+            <p>$${product.price}</p>
+          </div>
+        `;
+      });
+    });
+}
+
